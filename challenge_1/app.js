@@ -17,8 +17,9 @@
 //   //of three
 // };
 
-
 var board = new Array(9);
+//array for random moves with random func
+var randomIndex = [0, 1, 2, 3, 4, 5, 6, 7, 8]; //splice out as they're used
 var row1 = new Array(3);
 var row2 = new Array(3);
 var row3 = new Array(3);
@@ -40,8 +41,26 @@ var addingX = () => {
   //we need to take an input from the user and determine the coordinates
   //we can input an value to the global array 'board' and translate that to a
   //row
+  //the clicked box will have an 'X' appended to it on the DOM and adding that
+  //value to the game board
+  //that index will be spliced out of the randomIndex array
+  //then we invoke randomMoveGenerator and grab a new index
+  //assign that index as 'O' and move that index value from the randomIndex arrays
 
+  //*** going to assign ID's to all TD rows that cooresponds with the index
 };
+
+var randomMoveGenerator = () => {
+  var index = null;
+  var indexArraySize = randomIndex.length; // int value
+  //this will set var index to a random index value that is still available in
+  //the array;
+  index = randomIndex[Math.floor(Math.random() * indexArraySize)];
+};
+//determined winning combos: rows:arr[0-2], arr[3-5], arr[6-8]
+//                           columns: arr[0,3,6], arr[1,4,7], arr[2,5,8]
+//                           diagonals: arr[0,4,8], arr[2,4,6]
+
 
 var userWins = () => {
   return `Congrats bro(ette), you've won the game!`;
