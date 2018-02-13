@@ -17,6 +17,8 @@ var reset = () => {
 // win, tie, lose functions
 var xWins = () => {
   alert(`Congrats X-bro(ette), you've won the game!`);
+  xWon ++;
+  document.getElementById('wins').innerHTML = `X-Win-Count = ${xWon} O-Win-Count = ${ohWon}`;
 }
 
 var issaTie = () => {
@@ -25,6 +27,8 @@ var issaTie = () => {
 
 var oWins = () => {
   alert(`Congrats O-bro(ette), you've won the game!`);
+  ohWon ++;
+  document.getElementById('wins').innerHTML = `X-Win-Count = ${xWon} O-Win-Count = ${ohWon}`;
 }
 
 //check the rows for a winner
@@ -54,14 +58,6 @@ var rowCheck = (array) => {
     oWins();
     reset();
   }
-}
-
-var reset = () => {
-  for (var i = 0; i < 9; i++) {
-    document.getElementById(i.toString()).innerHTML = '';
-  }
-  turns = 1;
-  board = [0, 1, 2, 3, 4, 5, 6, 7, 8];
 }
 
 //check the columns for a winner
@@ -116,6 +112,9 @@ var diagonalCheck = (array) => {
 var board = [0, 1, 2, 3, 4, 5, 6, 7, 8]; // all starts with clean board
 
 var turns = 1;
+
+var xWon = 0;
+var ohWon = 0;
 
 var TicTacToe = (click) => { // click will be "this" in html
   let id = click.id;
