@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+  <h1 id="turn-count"></h1>
   <style>
     table {
       width: 30%;
@@ -20,38 +21,29 @@
     td {
       border: 3px solid #222;
     }
-    td:first-of-type {
-      border-left-color: transparent;
-      border-top-color: transparent;
-    }
-    td:nth-of-type(2) {
-      border-top-color: transparent;
-    }
-    td:nth-of-type(3) {
-      border-right-color: transparent;
-      border-top-color: transparent;
-    }
-    tr:nth-of-type(3) td {
-      border-bottom-color: transparent;
+    td {
+      font-size: 60px;
+      text-align: center;
     }
   </style>
 </head>
 <body>
   <table id="board">
     <tr>
-      <td id="0">fill me in</td>
-      <td id="1">fill me in</td>
-      <td id="2">fill me in</td>
+      <td id="0" onclick="TicTacToe(this)"></td>
+      <td id="1" onclick="TicTacToe(this)"></td>
+      <td id="2" onclick="TicTacToe(this)"></td>
     </tr>
     <tr>
-      <td id="3">fill me in</td>
-      <td id="4">fill me in</td>
-      <td id="5">fill me in</td>
+      <td id="3" onclick="TicTacToe(this)"></td>
+      <td id="4" onclick="TicTacToe(this)"></td>
+      <td id="5" onclick="TicTacToe(this)"></td>
     </tr>
     <tr>
-      <td id="6">fill me in</td>
-      <td id="7">fill me in</td>
-      <td id="8">fill me in</td>
+      <td id="6" onclick="TicTacToe(this)"></td>
+      <td id="7" onclick="TicTacToe(this)"></td>
+      <td id="8" onclick="TicTacToe(this)"></td>
     </tr>
   </table>
+  <script src="app.js"></script>
 </body>

@@ -5,71 +5,148 @@
 //output - when the is a winner or a tie, return a statement and clear the board
 //we know that the game can only have nine turns
 
-// var board = () => {
-//   let board = [];
-//   let theBoard = new Array(9);
-//   //*** might try adding an array(9) that the game works on and display them
-//   //with the corresponding rows
-//   let row1 = new Array(3);
-//   let row2 = new Array(3);
-//   let row3 = new Array(3);
-//   //we've now created the general board and three rows that are a maximum size
-//   //of three
-// };
+//game reset
+var reset = () => {
+  for (var i = 0; i < 9; i++) {
+    document.getElementById(i.toString()).innerHTML = '';
+  }
+  turns = 1;
+  board = [0, 1, 2, 3, 4, 5, 6, 7, 8];
+}
 
-var board = new Array(9);
-//array for random moves with random func
-var randomIndex = [0, 1, 2, 3, 4, 5, 6, 7, 8]; //splice out as they're used
-var row1 = new Array(3);
-var row2 = new Array(3);
-var row3 = new Array(3);
-//create a turn counter to count how many turns have gone by and if
-//game will consist of one player and computer
-//can use a random func that will generate a number for the index to place a row
-//this random func will be called everytime there is a user input that alters
-//the DOM in any way
-//possibly can use remove and add attr and listen for an event to do that action
-
-var TicTacToe = () => {
-
-}; // this is where the game will be played out
-
-//by default, the user will initially start off as X since it will always go
-//first.
-
-var addingX = () => {
-  //we need to take an input from the user and determine the coordinates
-  //we can input an value to the global array 'board' and translate that to a
-  //row
-  //the clicked box will have an 'X' appended to it on the DOM and adding that
-  //value to the game board
-  //that index will be spliced out of the randomIndex array
-  //then we invoke randomMoveGenerator and grab a new index
-  //assign that index as 'O' and move that index value from the randomIndex arrays
-
-  //*** going to assign ID's to all TD rows that cooresponds with the index
-};
-
-var randomMoveGenerator = () => {
-  var index = null;
-  var indexArraySize = randomIndex.length; // int value
-  //this will set var index to a random index value that is still available in
-  //the array;
-  index = randomIndex[Math.floor(Math.random() * indexArraySize)];
-};
-//determined winning combos: rows:arr[0-2], arr[3-5], arr[6-8]
-//                           columns: arr[0,3,6], arr[1,4,7], arr[2,5,8]
-//                           diagonals: arr[0,4,8], arr[2,4,6]
-
-
-var userWins = () => {
-  return `Congrats bro(ette), you've won the game!`;
+// win, tie, lose functions
+var xWins = () => {
+  alert(`Congrats X-bro(ette), you've won the game!`);
 }
 
 var issaTie = () => {
-  return `It's a tie game, click new game to try again!`;
+  alert(`It's a tie game, try again!`);
 }
 
-var cpuWins = () => {
-  return `The computer has the game! Restart for redemption!`;
+var oWins = () => {
+  alert(`Congrats O-bro(ette), you've won the game!`);
+}
+
+//check the rows for a winner
+var rowCheck = (array) => {
+  if (array[0] === 'X' && array[1] === 'X' && array[2] === 'X') {
+    xWins();
+    reset();
+  }
+  else if (array[3] === 'X' && array[4] === 'X' && array[5] === 'X') {
+    xWins();
+    reset();
+  }
+  else if (array[6] === 'X' && array[7] === 'X' && array[8] === 'X') {
+    xWins();
+    reset();
+  }
+
+  if (array[0] === 'O' && array[1] === 'O' && array[2] === 'O') {
+    oWins();
+    reset();
+  }
+  else if (array[3] === 'O' && array[4] === 'O' && array[5] === 'O') {
+    oWins();
+    reset();
+  }
+  else if (array[6] === 'O' && array[7] === 'O' && array[8] === 'O') {
+    oWins();
+    reset();
+  }
+}
+
+var reset = () => {
+  for (var i = 0; i < 9; i++) {
+    document.getElementById(i.toString()).innerHTML = '';
+  }
+  turns = 1;
+  board = [0, 1, 2, 3, 4, 5, 6, 7, 8];
+}
+
+//check the columns for a winner
+var columnCheck = (array) => {
+  if (array[0] === 'X' && array[3] === 'X' && array[6] === 'X') {
+    xWins();
+    reset();
+  }
+  else if (array[1] === 'X' && array[4] === 'X' && array[7] === 'X') {
+    xWins();
+    reset();
+  }
+  else if (array[2] === 'X' && array[5] === 'X' && array[8] === 'X') {
+    xWins();
+    reset();
+  }
+
+  if (array[0] === 'O' && array[3] === 'O' && array[6] === 'O') {
+    oWins();
+    reset();
+  }
+  else if (array[1] === 'O' && array[4] === 'O' && array[7] === 'O') {
+    oWins();
+    reset();
+  }
+  else if (array[2] === 'O' && array[5] === 'O' && array[8] === 'O') {
+    oWins();
+    reset();
+  }
+}
+
+//check diagonals for a winner
+var diagonalCheck = (array) => {
+  if (array[0] === 'X' && array[4] === 'X' && array[8] === 'X') {
+    xWins();
+    reset();
+  }
+  else if (array[2] === 'X' && array[4] === 'X' && array[6] === 'X') {
+    xWins();
+    reset();
+  }
+  if (array[0] === 'O' && array[4] === 'O' && array[8] === 'O') {
+    oWins();
+    reset();
+  }
+  else if (array[2] === 'O' && array[4] === 'O' && array[6] === 'O') {
+    oWins();
+    reset();
+  }
+}
+
+var board = [0, 1, 2, 3, 4, 5, 6, 7, 8]; // all starts with clean board
+
+var turns = 1;
+
+var TicTacToe = (click) => { // click will be "this" in html
+  let id = click.id;
+  if (turns % 2 === 1) {
+    addingX(id);
+  } else {
+    addingO(id);
+  }
+  //check for wins
+  if (turns >= 10) {
+    issaTie();
+    reset();
+  } else {
+    rowCheck(board);
+    columnCheck(board);
+    diagonalCheck(board);
+  }
+};
+
+//invoke to add X
+var addingX = (id) => {
+  document.getElementById(id).innerHTML = 'X';
+  board.splice(parseInt(id), 1, 'X');
+  turns ++; // increment the turn for every move
+  document.getElementById('turn-count').innerHTML = `It's Turn: ${turns - 1}`;
+};
+
+//invoke to add O
+var addingO = (id) => {
+  document.getElementById(id).innerHTML = 'O';
+  board.splice(parseInt(id), 1, 'O');
+  turns ++; // increment the turn for every move
+    document.getElementById('turn-count').innerHTML = `Turn: ${turns - 1}`;
 }
