@@ -4,12 +4,12 @@ const app = express();
 
 module.exports.app = app;
 
-app.set(`port`, 3000);
+app.set(`port`, 3001);
 
 //remember that semi-colons are not json
 app.use(parser.json());
 
-// app.use(express.static('client'));
+app.use(express.static('.'));
 // app.get('/', (req, res, next) => {
 //   let data = req.body;
 //   res.status();
