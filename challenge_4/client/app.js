@@ -46,13 +46,27 @@ class Bowling extends React.Component {
       //handle one strike
     for (var i = 0; i < this.state.score.length; i++) {
       if (this.state.score[i][0] === 'X' && this.state.score[i - 1][0] === 'X' && this.state.score[i - 2] === 'X') {
-        points = 30;
+        points += 20;
       }
       else if (this.state.score[i][0] === 'X' && this.state.score[i - 1][0] === 'X') {
-        points = 20;
+        points += 10;
       }
       else {
         points;
+      }
+    }
+  }
+  substractPoints() {
+    //subtract points from missed spares
+    //subtract points from missed strikes etc...
+  }
+  //adding spare conditions
+  spares() {
+    let points = 10;
+    for (var i = 0; i < this.state.score.length; i++) {
+      if (this.state.score[i][0] === '9' && this.state.score[i][1] === '1') {
+        //points are dependent on what is rolled on the subsequent frame
+        point += 10;
       }
     }
   }
