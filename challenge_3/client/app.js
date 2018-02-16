@@ -58,9 +58,7 @@ class App extends React.Component {
         <table id="issaBoard">
           <tbody>
             {this.state.gameData.map((row, index) => {
-              console.log(this.state.gameData[0]);
-              return <tr key={index.toString()} id={index.toString()} rows={row} onClick={this.state.handleClick} style={rowStyles}
-              func={individualBox()}/>
+              return <tr key={index.toString()} id={index.toString()} rows={row} onClick={this.state.handleClick} style={rowStyles}/>
             })}
           </tbody>
         </table>
@@ -71,13 +69,11 @@ class App extends React.Component {
 
 
 var individualBox = (props) => {
-  console.log(props)
-  // <tr>
-  //   {console.log(props)}
-  //   {this.state.rows.map((box, index) => {
-  //     return <td key={index.toString()} id={index.toString()} boxs={box} />
-  //   })}
-  // </tr>
+  <tr>
+    {this.state.rows.map((box, index) => {
+      return <td key={index.toString()} id={index.toString()} boxs={box} />
+    })}
+  </tr>
 }
 //for each row, we need to add 7 cells
 

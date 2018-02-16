@@ -1,0 +1,61 @@
+//created es6 class constructor function => rest will be methods
+class cashAmount {
+  constructor(cash) {
+    this.cash = cash;
+  }
+  //add total in pennies method
+  totalInPennies() {
+    return cash * 100;
+  }
+  //add another amount
+  addDoubleAmount(doubleAmount) {
+    let pennies = this.totalInPennies(doubleAmount);
+    return pennies + this.cash;
+  }
+  //to double from pennies
+  toDouble() {
+    return this.cash / 100;
+  }
+  //to toDoubleString
+  toDoubleString() {
+    let inString = this.cash.toString();
+    return inString;
+  }
+
+}
+
+const cash = new CashAmount(10.50);
+cash.totalInPennies(); // -> 1050
+
+const cash = new CashAmount(10.50);
+cash.addDoubleAmount(29.33);
+cash.totalAsPennies(); // -> 3983
+
+const cash = new CashAmount(967.93);
+cash.quantityOfEachDenomination() // ->
+{
+  'hundreds': 9,
+  'fifties': 1,
+  'twenties': 0,
+  'tens': 1,
+  'fives': 1,
+  'ones': 2,
+  'quarters': 3,
+  'dimes': 1,
+  'nickels': 1,
+  'pennies': 3
+}
+
+const cash = new CashAmount(10.50);
+cash.addDoubleAmount(29.33);
+cash.toDouble(); // -> 39.83
+
+const cash = new CashAmount(10.50);
+cash.addDoubleAmount(29.33);
+cash.toDoubleString(); // -> '39.83'
+
+// Problem case with floating-point arithmetic: 0.10 + 0.20 !== 0.30
+// But for us, should be: 0.10 + 0.20 === 0.30
+const cash = new CashAmount(0.10);
+cash.addDoubleAmount(0.20);
+console.log(cash.totalInPennies() === 30
